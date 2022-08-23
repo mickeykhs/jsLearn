@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        h1 {
+            background: #fff000;
+        }
+        .ilbuni{
+            display: inline-block;
+            list-style: none;
+        }
+        .ilbuni img{
+            width: 100px;
+        }
+        .link-google{
+            color: red;
+        }
+        .special {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-title">Event</h1>
+    <ul class="ilbuni-mom">
+        <li class="ilbuni">
+            <img src="/images/peb1.jpg">
+            <a class="link-google special" href="https://google.com">Google</a>
+        </li>
+        <li class="ilbuni"><img src="/images/peb2.jpg" alt=""></li>
+        <li class="ilbuni"><img src="/images/peb3.jpg" alt=""></li>
+    </ul>
+    <script>
+        // var link = document.querySelector('.ilbuni a');
+        /* console.log(link.getAttribute('href'));  // get 리턴값 필요
+        link.setAttribute('href', 'https://naver.com'); // set 리턴값 필요 없음
+        console.log(link.getAttribute('href')); */
+
+        // 클래스 추가, 삭제
+        /* link.className = 'link-google special'; 잘 사용 안함 */
+        /* link.classList.add('special', 'foo');
+        setTimeout(function(){
+            link.classList.remove('link-google');
+        },2000);
+        console.log(link.classList.contains('special')); */
+
+        var listElem = document.createElement('li');
+        // console.log(listElem);
+        listElem.innerHTML = '<span>박은빈</span>';
+        // console.log(listElem);  // 자리를 지정해주자~
+        // 자리(즉 position은 부모가 지정해준다!!!) 여기선 li의 부모인 ul
+        // 1. ul을 가져온다
+        var ilbuniMom = document.querySelector('.ilbuni-mom');
+        ilbuniMom.appendChild(listElem);
+    </script>
+</body>
+</html>
