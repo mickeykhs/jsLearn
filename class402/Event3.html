@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body { font-size: 2.5rem;}
+        h1 {
+            background: #fff000;
+        }
+        .menu {
+            display: flex;
+            background: yellowgreen;
+        }
+        .menu-link {
+            margin: .1em;
+            padding: .3em;
+            color: #fff;
+            background:  dodgerblue;
+            text-decoration: none;
+            list-style: none;
+        }
+        .menu-active {
+            background: orange;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 id="main-title">
+        Event
+    </h1>
+
+    <nav class="menu">
+        <a href="#" class="menu-link" data-menu="1">menu 1</a>
+        <a href="#" class="menu-link" data-menu="2">menu 2</a>
+        <a href="#" class="menu-link" data-menu="3">menu 3</a>
+    </nav>
+
+    <canvas></canvas>
+
+    <script>
+        // 이벤트 위임
+        var currentMenu;
+        var menu = document.querySelector('.menu');
+
+        function clickHandler(e){
+            if(currentMenu){
+                currentMenu.classList.remove('menu-active');
+                console.log(currentMenu);
+            }
+            e.target.classList.add('menu-active');
+            currentMenu = e.target;
+            // console.log(this); addEventListener를 불러온 객체 menu를 뜻함
+            // console.log(e.currentTarget);
+            // console.log(e.target);
+        }
+        menu.addEventListener('click', clickHandler);
+    </script>
+</body>
+</html>
