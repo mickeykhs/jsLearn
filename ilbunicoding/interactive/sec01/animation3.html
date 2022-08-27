@@ -15,8 +15,16 @@
             width: 150px;
             height: 150px;
             background: url('./images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
-            animation: spaceship-ani 1s infinite steps(17);            
+            animation: spaceship-ani 0.5s infinite steps(17);           
         }
+        .spaceship:hover {
+            animation-play-state: paused;
+        }
+        /* steps(17) : 쉽게말해 17칸으로 나누어서 화면을 찍어준다 
+        img크기 5100px/300px 고화질을위해 크기를 반으로줄임
+        반복은 0 백그라운드크기 auto 150px 정해주고 따라서 키프레임 마지막에서 왼쪽으로
+        5100의 반인 2550px만큼(전체) 애니메이션 steps로 찍어준다 
+        화면상 돌아가는 느낌 */
     </style>
 </head>
 <body>

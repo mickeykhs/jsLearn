@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+/* 가운데 박스플립 css */
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+}
+
+.filp-btn{
+    width: 200px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    transform-style: preserve-3d;
+    transition: 1.5s;
+    cursor: pointer;
+}
+
+.filp-btn:hover{
+    transform: rotateX(-90deg);
+}
+.front{
+    background-color: goldenrod;
+    height: 100px;
+    transform: translateZ(50px);
+    /* font-family: 'IBM Plex mono'; */
+}
+
+.back{
+    background-color: darkgoldenrod;
+    height: 100px;
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+#khs{
+    width: 200px;
+    height: 100px;
+    left: 10px;
+    background-color: darkgoldenrod;
+    border: 0;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+    font-family: 'IBM Plex mono';
+    font-size: large;
+}
+
+
+/* 눈송이 css */
+.snow{
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    background: #fff;
+    border-radius: 50%;
+    animation: snow 10s linear infinite;
+}
+
+.snow:nth-of-type(2n){
+    width: 7px;
+    height: 7px;
+    animation-duration: 7s;
+    animation-delay: 1s;
+}
+
+.snow:nth-of-type(2n+1){
+    width: 10px;
+    height: 10px;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.snow:nth-of-type(9n){
+    width: 10px;
+    height: 10px;
+    animation-duration: 9s;
+    animation-delay: 3s;
+}
+
+@keyframes snow {
+    0%{
+        opacity: 0;
+        transform: translateY(0);
+    }
+    20%{
+        opacity: 1;
+        transform: translate(-15px, 20vh);
+    }
+    40%{
+        opacity: 1;
+        transform: translate(15px, 40vh);
+    }
+    60%{
+        opacity: 1;
+        transform: translate(-15px, 60vh);
+    }
+    80%{
+        opacity: 1;
+        transform: translate(0, 80vh);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(100vh);
+    }
+}
+
+/* 고스트 css */
+.ghost {
+    animation: moveUpDown 3s infinite;
+    position: absolute;
+}
+
+@keyframes moveUpDown {
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top: -50px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}
+.ghost .body{
+    width: 120px;
+    height: 160px;
+    background-color: #fff;
+    border-top-left-radius: 45%;
+    border-top-right-radius: 45%;
+    position: relative;
+    left: 100px;
+    top: 100px;
+}
+
+.ghost .body .face {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 70px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ghost .body .face .eye{
+    width:  19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.ghost .body .face .mouse{
+    width: 33px;
+    height: 15px;
+    background-color: #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 18px;
+    margin-top: 13px;
+}
+
+.ghost .bottom{
+    display: flex;
+}
+
+.ghost .bottom .leg{
+    background-color: #fff;
+    width: 24px;
+    height: 15px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative;
+    left: 100px;
+    top: 100px;
+}
+.ghost .bottom .leg:nth-child(2n){
+    /* position: relative;
+    top: 94px;
+    left: 100px */
+    position: relative;
+    background-color: #000;
+    border-radius: 50%;
+    top: 94px;
+    
+}
