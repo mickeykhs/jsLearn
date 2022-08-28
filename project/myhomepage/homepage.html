@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
     <title>My Home Page</title>
     <link rel="stylesheet" href="./css/hpstyle.css">
   </head>
@@ -11,7 +12,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="container">
       <div class="header">
-        <h1><a href="#">DESIGN</a></h1>
+        <h1><a href="#" style="font-family: 'IBM Plex mono';">e7e-JavaScript</a></h1>
         <div class="nav">
           <ul>
             <li><a href="#">home</a></li>
@@ -23,11 +24,42 @@
         </div>
       </div>
       <div class="hero">
-        <h2>DESIGN MY WEBSITE</h2>
-        <p>Subscribe Easy Youtube Channel to watch more videos,<br> press t he bell icon to get latest updates.</p>
+        <h2 style="font-family: 'IBM Plex mono';">DESIGN MY WEBSITE</h2>
+        <!-- <p id="content" style="font-family: 'IBM Plex mono';">Let's decorate our personal home page.<br>We also made fun games. Let's Go!!</p> -->
+        <p id="content" style="font-family: 'IBM Plex mono';"></p>
         <button onclick="game()">mini game</button>
       </div>
     </div>
     <script src="./hp.js"></script>
+    <script>
+      // document.addEventListener('DOMContentLoaded', () => {
+      //   new TypeIt('#content')
+      //     .pause(700)
+      //     .delete(10, {delay:1000})
+      //     .type('START!!')
+      //     .go();
+      // });
+      new TypeIt("#content",{
+        speed:80,
+        waitUntilVisible: true,
+      })
+        .type("Lat's", { delay: 300 })
+        .move(-3)
+        .delete(1)
+        .type("e")
+        .move(null, { to: "END" })
+        .type(" decoratte")
+        .pause(300)
+        .delete(2)
+        .type("our personal hom pag")
+        .move(-4)
+        .type("e")
+        .move(null, { to: "END" })
+        .type("e")
+        .pause(500)
+        .break({ delay: 500})
+        .type(" We also made fun games. Let's go")
+        .go();
+    </script>
   </body>
 </html>

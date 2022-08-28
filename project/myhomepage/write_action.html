@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<script src="./noticelib.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<head>
+    <script src="./noticelib.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
 <script>
     // 넘어온 값들
     var v_title = request.getParameter("nm_title");
@@ -25,6 +29,18 @@
     v_arrTotal.push(v_gul);
 
     localStorage.setItem(v_tableName, JSON.stringify(v_arrTotal));
-    alert("잘 등록되었습니다.");
-    location.replace("list.html");
+    Swal.fire({
+        icon: 'success',
+        title: '글이 잘 등록되었습니다',
+        showConfirmButton: false,
+        timer: 5500
+    }).then((value) => {
+        if(value){
+            location.replace('./list.html');
+        }
+    });
+    // alert("잘 등록되었습니다.");
+    // location.replace("list.html");
 </script>
+</body>
+</html>

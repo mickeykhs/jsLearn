@@ -18,12 +18,12 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    <input type="text" name="nm_title" value="안녕하세요" style="font-size: 2rem; border: none;">
+                    <input type="text" name="nm_title" value="안녕하세요" style="font-size: 2rem; border: none; width: 70%;">
                 </div>
                 <div class="info">
-                    <dl>
-                        <dt>번호</dt>
-                        <dd>1</dd>
+                    <dl class="abc">
+                        <!-- <dt>번호</dt>
+                        <dd>1</dd> -->
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
@@ -53,17 +53,24 @@
 <script>
     var v_form = document.querySelector("#id_rform");
     var v_delBtn = document.querySelector("#id_del");
+    var v_abc = document.querySelector('.abc');
+    
     function f_del(){
         v_form.action = "delete_action.html";
         v_form.submit();
     }
     v_delBtn.addEventListener("click", f_del);
+
     var v_titleText = v_form.nm_title;
     var v_writerText = v_form.nm_writer;
     var v_contentText = v_form.nm_content;
     
     var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
     var v_gnum = request.getParameter("gnum");
+
+    var boardStr = "<dt>번호</dt>";
+    boardStr += "<dd>" + v_gnum + "</dd>";
+    v_abc.innerHTML = boardStr;
 
     var v_schGul;
     for(var i=0; i<v_dataArr.length; i++){
@@ -72,7 +79,6 @@
             break;
         }
     }
-
     v_titleText.value = v_schGul.title;
     v_writerText.value = v_schGul.writer;
     v_contentText.value = v_schGul.content;

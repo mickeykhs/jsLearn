@@ -3,7 +3,6 @@ var request = {};  // name space용 빈객체
 // 사용자 요청을 담은 객체
 request.getParameter = function (p_name) {
     if(location.href.indexOf("?") == -1) return null;
-    
     var v_queryString = location.href.split("?")[1];
     var v_nvSSang = v_queryString.split("&");
     for(var i=0; i<v_nvSSang.length; i++){

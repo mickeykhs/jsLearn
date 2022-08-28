@@ -6,9 +6,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/css.css">
     <script src="./noticelib.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .swal2-popup {
+            font-size: 1.7rem;
+        }
+    </style>
 </head>
 <body>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <div class="board_wrap">
         <div class="board_title">
             <strong>공지사항</strong>
@@ -60,10 +66,10 @@
             v_boardStr += "<a class=num href='list.html?pNum=" + i + "'>" + i + "</a>";
         }
     }
-    v_boardStr += "<a class='bt last' href='list.html?pNum=" + (v_pGaesu-1) +"'>" + ">></a>";
+    v_boardStr += "<a class='bt last' href='list.html?pNum=" + v_pGaesu +"'>" + ">></a>";
     v_boardStr += "</div>"; 
     v_boardStr += "<div class=bt_wrap><a href=write.html class=on>새글 작성</a>";
-    v_boardStr += "<input id=id_del type=button onclick=sweet() value='체크박스 삭제'>새글 작성</div>";
+    v_boardStr += "<input id=id_del type=button value='체크박스 삭제'>새글 작성</div>";
 
     v_blw.innerHTML = v_boardStr;
 
@@ -88,9 +94,27 @@
             }
         }
         
-        console.log(v_dataArr);
         localStorage.setItem(v_tableName, JSON.stringify(v_dataArr));
-        location.replace("list.html?pNum=" + v_pNum);
+        
+        Swal.fire({
+            title: '정말로 삭제하시겠습니까?',
+            text: '다시 되돌릴 수 없습니다. 신중하세요',
+            icon: 'warning',
+
+            showCancelButton: true,
+            ConfirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '승인',
+            cancelButtonText: '취소',
+
+            reverseButtons: false,
+
+        }).then(result => {
+            if(result.isConfirmed){
+                location.replace('./list.html?pNum=' + v_pNum);
+            }
+        });
+        // location.replace("list.html?pNum=" + v_pNum);
     }
     v_delBtn.addEventListener("click",f_del);
 
