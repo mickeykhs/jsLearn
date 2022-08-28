@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="./noticelib.js"></script>
+<script>
+    var v_gnum = request.getParameter("nm_gnum");
+    var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
+
+    for(var i=0; i<v_dataArr.length; i++){
+        if(v_dataArr[i].pid == v_gnum){
+            v_dataArr.splice(i,1);
+            break;
+        }
+    }
+
+    localStorage.setItem(v_tableName, JSON.stringify(v_dataArr));
+    alert("잘 지웠어요");
+    location.replace("list.html");
+</script>

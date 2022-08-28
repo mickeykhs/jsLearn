@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./noticelib.js"></script>
     <link rel="stylesheet" href="./css/css.css">
 </head>
 <body>
+<form id="id_rform" action="update_action.html" method="get">
+    <input type="hidden" name="nm_gnum" value="">
     <div class="board_wrap">
         <div class="board_title">
             <strong>공지사항</strong>
@@ -15,7 +18,7 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    글 제목이 들어갑니다.
+                    <input type="text" name="nm_title" value="안녕하세요" style="font-size: 2rem; border: none;">
                 </div>
                 <div class="info">
                     <dl>
@@ -24,7 +27,7 @@
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd>김이름</dd>
+                        <dd><input type="text" name="nm_writer" value="" disabled style="border: none; background: white;"></dd>
                     </dl>
                     <dl>
                         <dt>작성일</dt>
@@ -36,21 +39,45 @@
                     </dl>
                 </div>
                 <div class="cont">
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다
+                    <textarea name="nm_content" cols="75" rows="10" required></textarea>
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="list.html" class="on">목록</a>
-                <a href="edit.html">수정</a>
+                <input type="button" class="on" id="id_del" value="삭제">
+                <input type="submit" value="수정">
             </div>
         </div>
     </div>
+</form>
+
+<script>
+    var v_form = document.querySelector("#id_rform");
+    var v_delBtn = document.querySelector("#id_del");
+    function f_del(){
+        v_form.action = "delete_action.html";
+        v_form.submit();
+    }
+    v_delBtn.addEventListener("click", f_del);
+    var v_titleText = v_form.nm_title;
+    var v_writerText = v_form.nm_writer;
+    var v_contentText = v_form.nm_content;
+    
+    var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
+    var v_gnum = request.getParameter("gnum");
+
+    var v_schGul;
+    for(var i=0; i<v_dataArr.length; i++){
+        if(v_dataArr[i].pid == v_gnum){
+            v_schGul = v_dataArr[i];
+            break;
+        }
+    }
+
+    v_titleText.value = v_schGul.title;
+    v_writerText.value = v_schGul.writer;
+    v_contentText.value = v_schGul.content;
+    
+    v_form.nm_gnum.value = v_gnum;
+</script>
 </body>
 </html>

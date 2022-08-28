@@ -40,6 +40,22 @@ a {
     font-size: 0;
 }
 
+.bt_wrap input {
+    display: inline-block;
+    min-width: 102px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.bt_wrap input[type="submit"] {
+    background: #000;
+    color: #fff;
+}
+
 .bt_wrap a {
     display: inline-block;
     min-width: 80px;
@@ -88,11 +104,11 @@ a {
     font-weight: 600;
 }
 
-.board_list .num{
+.board_list .num {
     width: 10%;
 }
 
-.board_list .title{
+.board_list .title {
     width: 60%;
     text-align: left;
 }
@@ -101,15 +117,15 @@ a {
     text-align: center;
 }
 
-.board_list .writer{
+.board_list .writer {
     width: 10%;
 }
 
-.board_list .date{
+.board_list .date {
     width: 10%;
 }
 
-.board_list .count{
+.board_list .delete {
     width: 10%;
 }
 
