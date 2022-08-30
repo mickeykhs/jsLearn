@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    var v_dummyDatas = [];
+
+    for(var i=1; i<=25; i++){
+        var v_gul = {};
+        v_gul.pid = i;
+        v_gul.title = "제목 " + i;
+        v_gul.writer = "글쓴이 " + i;
+        v_gul.content = "내용 " + i + "입니다.";
+        v_dummyDatas.push(v_gul);
+    }
+
+    localStorage.setItem("noticeTB", JSON.stringify(v_dummyDatas));
+</script>
+    

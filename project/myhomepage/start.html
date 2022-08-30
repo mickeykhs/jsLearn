@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Home Page</title>
+    <link rel="stylesheet" href="./css/start.css"/>
+  </head>
+  <body>
+    <div class="ghost">
+      <div class="body">
+        <div class="face">
+          <div class="eye"></div>
+          <div class="eye"></div>
+          <div class="mouse"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="leg"></div>
+        <div class="leg"></div>
+        <div class="leg"></div>
+        <div class="leg"></div>
+        <div class="leg"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="filp-btn">
+        <div class="front">
+          <input
+            type="button"
+            value="hello, you welcome"
+            onclick="khs()"
+            id="khs"
+          />
+        </div>
+        <div class="back">
+          <input type="button" value="khsHomePage" onclick="khs()" id="khs" />
+        </div>
+      </div>
+    </div>
+    <script>
+      // 고스트 드래그 이벤트
+      document.body.addEventListener("mousemove", function(e){
+        console.log(e);
+        document.querySelector('.ghost').style.left = e.pageX + 'px';
+        document.querySelector('.ghost').style.top = e.pageY + 'px';
+      });
+
+
+      // 눈 만들어주는 함수
+      function createSnow() {
+        const el = document.createElement("div");
+        el.classList.add("snow");
+        el.style.marginLeft = randomPosition() + "px";
+        document.body.appendChild(el);
+      }
+
+      // 눈 내리는 위치 조절 함수
+      function randomPosition() {
+        return Math.floor(Math.random() * window.innerWidth);
+      }
+
+      // for문으로 눈을 늘려줌
+      for (let i = 0; i < 300; i++) {
+        createSnow();
+      }
+
+      function khs() {
+        location.href = "./homepage.html";
+      }
+
+
+    </script>
+  </body>
+</html>

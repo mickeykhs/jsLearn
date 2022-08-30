@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        h1 {
+            background: #fff000;
+        }
+        .ilbuni{
+            display: inline-block;
+            list-style: none;
+        }
+        .ilbuni img{
+            width: 100px;
+        }
+        .link-google{
+            color: red;
+        }
+        .special {
+            background: pink;
+        }
+        .btn {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-title">Event</h1>
+    <ul class="ilbuni-mom">
+        <li class="ilbuni">
+            <img src="/images/peb1.jpg">
+            <a class="link-google special" href="https://google.com">Google</a>
+        </li>
+        <li class="ilbuni"><img src="/images/peb2.jpg" alt=""></li>
+        <li class="ilbuni"><img src="/images/peb3.jpg" alt=""></li>
+    </ul>
+    <button class="btn">클릭하세요!</button>
+
+
+    <script>
+        var btn = document.querySelector('.btn');
+        var mainTitle = document.querySelector('#main-title');
+
+        // 이벤트를 사용할 때는 함수를 만들어서 이벤트가 발생했을때 함수(기능)을 호출해주자 
+        
+        function btnClickHandler(){
+            mainTitle.style.background = 'dodgerblue';
+        }
+        
+        // 1. addEventListener('이벤트이름', '함수(기능)', false)
+        btn.addEventListener('click', btnClickHandler);
+        // btn.addEventListener('click', btnClickHandler2);
+        // btn.addEventListener('click', btnClickHandler3);
+
+        // 2. .onclick = btnClickHandler;
+        btn.onclick = btnClickHandler; // 잘 사용하지 않음 (이벤트 하나만 사용함)
+    </script>
+</body>
+</html>

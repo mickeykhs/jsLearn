@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./noticelib.js"></script>
+    <link rel="stylesheet" href="./css/css.css">
+</head>
+<body>
+<form id="id_rform" action="update_action.html" method="get">
+    <input type="hidden" name="nm_gnum" value="">
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        <div class="board_view_wrap">
+            <div class="board_view">
+                <div class="title">
+                    <input type="text" name="nm_title" value="안녕하세요" style="font-size: 2rem; border: none; width: 70%;">
+                </div>
+                <div class="info">
+                    <dl class="abc">
+                        <!-- <dt>번호</dt>
+                        <dd>1</dd> -->
+                    </dl>
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd><input type="text" name="nm_writer" value="" disabled style="border: none; background: white;"></dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd><input type="date" name="t_date" value=""  style="border: none"></dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd><input type="text" name="t_num" value="1" style="border: none;"></dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <textarea name="nm_content" cols="75" rows="10" required></textarea>
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <input type="button" class="on" id="id_del" value="삭제">
+                <input type="submit" value="수정">
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    // var v_inq = document.querySelector("input[name=t_num]");
+    // function increse(){
+    // 조회수를 증가시켜야한다
+    //     v_inq.value++;
+    // }
+
+    var v_form = document.querySelector("#id_rform");
+    var v_delBtn = document.querySelector("#id_del");
+    var v_abc = document.querySelector('.abc');
+    
+    function f_del(){
+        v_form.action = "delete_action.html";
+        v_form.submit();
+    }
+    v_delBtn.addEventListener("click", f_del);
+
+    document.querySelector("input[name=t_date]").value = f_getToday();
+
+    var v_titleText = v_form.nm_title;
+    var v_writerText = v_form.nm_writer;
+    var v_contentText = v_form.nm_content;
+    
+    
+    var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
+    var v_gnum = request.getParameter("gnum");
+
+    var boardStr = "<dt>번호</dt>";
+    boardStr += "<dd>" + v_gnum + "</dd>";
+    v_abc.innerHTML = boardStr;
+
+    var v_schGul;
+    for(var i=0; i<v_dataArr.length; i++){
+        if(v_dataArr[i].pid == v_gnum){
+            v_schGul = v_dataArr[i];
+            break;
+        }
+    }
+
+    v_titleText.value = v_schGul.title;
+    v_writerText.value = v_schGul.writer;
+    v_contentText.value = v_schGul.content;
+    
+    v_form.nm_gnum.value = v_gnum;
+</script>
+</body>
+</html>

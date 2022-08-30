@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body { font-size: 2.5rem;}
+        h1 {
+            background: #fff000;
+        }
+        .menu {
+            display: flex;
+        }
+        .menu-link {
+            margin: .1em;
+            padding: .3em;
+            color: #fff;
+            background:  dodgerblue;
+            text-decoration: none;
+            list-style: none;
+        }
+        .menu-active {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-title">Event</h1>
+
+    <nav class="menu">
+        <a href="#" class="menu-link" data-menu="1">menu 1</a>
+        <a href="#" class="menu-link" data-menu="2">menu 2</a>
+        <a href="#" class="menu-link" data-menu="3">menu 3</a>
+    </nav>
+
+    <script>
+        // 현재 활성화된 메뉴를 담을 변수
+        var currentMenu;
+        var menuLinks = document.querySelectorAll('.menu-link');
+
+        // 메뉴를 누르면 오렌지색으로 바뀌고 다른 메뉴를 누르면 기존의 오렌지색이
+        // 파란색으로 바뀌고 누른 메뉴의 색이 오렌지색으로 바뀌게 해보자.
+        function clickMenuHandler(){
+            // console.log('click');
+            // 1. 방법
+           /*  
+            for(var i=0; i<menuLinks.length; i++){
+                menuLinks[i].classList.remove('menu-active');
+                this.classList.add('menu-active');
+            } */
+            
+            // 2. 방법
+            /* var activeMenu = document.querySelector('.menu-active');
+            if(activeMenu){
+                activeMenu.classList.remove('menu-active');
+            }
+            this.classList.add('menu-active'); */
+
+            // 3. 방법
+            if(currentMenu){
+                currentMenu.classList.remove('menu-active');
+            }
+            this.classList.add('menu-active');
+            currentMenu = this;
+        }
+
+        for(var i=0; i<menuLinks.length; i++){
+            menuLinks[i].addEventListener('click', clickMenuHandler);
+        }
+    </script>
+</body>
+</html>

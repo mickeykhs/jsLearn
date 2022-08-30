@@ -1,0 +1,12 @@
+<!-- 웹 브라우저의 스크롤 이동 -->
+<body>
+    <script>
+
+        window.scrollTo(100, 200);
+        window.scrollBy(100, 200);
+        
+        /* behavior 속성을 전달할수 있다. smooth로 하면 스크롤이 부드럽게 이동 */
+        window.scrollTo({top:4000, behavior:'smooth'});
+        window.scrollBy({top:600, behavior:'smooth'});
+    </script>
+</body>
