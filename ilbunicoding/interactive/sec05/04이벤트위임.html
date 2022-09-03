@@ -16,19 +16,18 @@
     </div>
     <script>
         (function(){
-            const ilbuniGroup = document.querySelectorAll('.ilbuni');
             const stage = document.querySelector('.stage');
 
             function clickHandler(e){
-                // console.log(this);
                 // console.log(e.currentTarget);
-                // stage.removeChild(this);
-                this.parentNode.removeChild(this);
+                // console.log(e.target);
+                // 예외처리: 일분이의 클래스가 포함되있지않으면 아무것도 실행시키지 않는 조건문 
+                if(e.target.classList.contains('ilbuni')){
+
+                    stage.removeChild(e.target);
+                }
             }
-            // this가 가리키는것은 객체 즉 libuniGroup[i]를 가르킨다.
-            for(let i=0; i<ilbuniGroup.length; i++){
-                ilbuniGroup[i].addEventListener('click', clickHandler)
-            }
+            stage.addEventListener('click', clickHandler);
         })();
     </script>
 </body>
