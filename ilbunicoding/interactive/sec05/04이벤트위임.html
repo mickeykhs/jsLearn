@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/03_03.css">
+</head>
+<body>
+    <div class="stage">
+        <div class="ilbuni a"></div>
+        <div class="ilbuni b"></div>
+        <div class="ilbuni c"></div>
+    </div>
+    <script>
+        (function(){
+            const stage = document.querySelector('.stage');
+
+            function clickHandler(e){
+                // console.log(e.currentTarget);
+                // console.log(e.target);
+                // 예외처리: 일분이의 클래스가 포함되있지않으면 아무것도 실행시키지 않는 조건문 
+                if(e.target.classList.contains('ilbuni')){
+
+                    stage.removeChild(e.target);
+                }
+            }
+            stage.addEventListener('click', clickHandler);
+        })();
+    </script>
+</body>
+</html>

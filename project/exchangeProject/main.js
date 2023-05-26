@@ -48,7 +48,7 @@ document.querySelectorAll("#from-currency-list a").forEach((menu) =>
     document.getElementById("from-button").textContent = this.textContent;
 
     //3. 선택된 currency값을 변수에 저장해준다
-    fromCurrency = this.textContent;
+    fromCurrency = this.textContent; // ex) USD or KRW or VND
     //console.log("fromCurrency는", fromCurrency);
     convert("from");
   })

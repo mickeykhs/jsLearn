@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        
+        .door {
+            position: relative;
+            width: 100px;
+            height: 150px;
+            outline: 2px dashed yellow;
+        }
+        .door-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="door">
+            <div class="door-back"></div>
+            <div class="ilbuni"></div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back"></div>
+            <div class="ilbuni"></div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back"></div>
+            <div class="ilbuni"></div>
+            <div class="door-body"></div>
+        </div>
+    </div>
+</body>
+</html>
