@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        body {
+            background: gray;
+        }
+        .orange {
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        .pink {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="orange"></div>
+    <hr>
+    <div class="pink"></div>
+    <script>
+        /* gsap.com -> Docs -> Easing 참고 */
+        gsap.to('.orange',{duration:3,x:500,ease:Bounce.easeOut});
+        //gsap.to('.pink',{duration:3,x:600,ease:'linear'});
+        gsap.to('.pink',{duration:3,x:500,ease:Power3.easeIn});
+    </script>
+</body>
+</html>
