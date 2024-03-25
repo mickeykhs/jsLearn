@@ -8,7 +8,11 @@ request.getParameter = function (p_name) {
     for(var i=0; i<v_nvSSang.length; i++){
         var nv = v_nvSSang[i].split("=");
         if(nv[0] == p_name){
+<<<<<<< HEAD
+            return decodeURIComponent(nv[1]);
+=======
             return decodeURIComponent(nv[1].replaceAll("+"," "));
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
         }
     }
     return null;
@@ -24,12 +28,18 @@ request.getParameterValues = function (p_name){
     for(var i=0; i<v_nvSSang.length; i++){
         var nv = v_nvSSang[i].split("=");
         if(nv[0] == p_name){
+<<<<<<< HEAD
+            v_values.push(nv[1]);
+=======
             v_values.push(nv[1]).replaceAll("+"," ");
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
         }
     }
     if(!v_values.length) return null;
     return v_values;
 }
+<<<<<<< HEAD
+=======
 
 function f_getToday() {
     var v_toDay = new Date();
@@ -46,3 +56,4 @@ function f_getToday() {
     }
     return v_year + "-" + v_month + "-" + v_date;
 }
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04

@@ -9,14 +9,21 @@ document.body.appendChild(canvas);
 
 
 let backgroundImage,spaceshipImage,bulletImage,enemyImage,gameOverImage;
+<<<<<<< HEAD
+
+=======
 let gameOver = false; // true이면 게임 끝 , false이면 안끝남
 
 let score = 0;
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 // 우주선 좌표
 let spaceshipX = canvas.width/2 - 30;
 let spaceshipY = canvas.height-60;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 let bulletList = []; // 총알들을 저장하는 리스트
 function Bullet(){
     this.x=0;
@@ -24,12 +31,19 @@ function Bullet(){
     this.init=function(){
         this.x=spaceshipX+19;
         this.y=spaceshipY;
+<<<<<<< HEAD
+
+=======
         this.alive=true; // true면 살아있는 총알 false면 죽은 총알
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
         bulletList.push(this);
     };
     this.update = function(){
         this.y -= 7;
     };
+<<<<<<< HEAD
+}
+=======
 
     this.checkHit = function(){
         // 총알.y <= 적군.y And 
@@ -71,6 +85,7 @@ function Enemy(){
     };
 }
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 function loadImage(){
     backgroundImage = new Image();
     backgroundImage.src = "images/background.gif";
@@ -94,6 +109,18 @@ function setupKeyboardListener(){
 
 
         keysDown[event.keyCode] = true;
+<<<<<<< HEAD
+        // console.log("키다운 객체에 들어간 값은 ?" , keysDown);
+    });
+    document.addEventListener("keyup", function(event){
+        delete keysDown[event.keyCode];
+
+        if(event.keyCode == 32){
+            createBullet(); // 총알 생성
+        }
+        // console.log("버튼클릭후", keysDown);
+    });
+=======
         console.log("키다운 객체에 들어간 값은 ?" , keysDown);
     });
     document.addEventListener("keyup", function(event){
@@ -105,6 +132,7 @@ function setupKeyboardListener(){
         console.log("버튼클릭후", keysDown);
     });
     
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 }
 
 function createBullet(){
@@ -113,6 +141,8 @@ function createBullet(){
     console.log("새로운 총알 리스트", bulletList);
 }
 
+<<<<<<< HEAD
+=======
 function createEnemy(){
     const interval = setInterval(function(){
         let e = new Enemy();
@@ -121,6 +151,7 @@ function createEnemy(){
 
 }
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 function update(){
     if(39 in keysDown){
         spaceshipX += 5;  // 우주선의 속도 
@@ -139,6 +170,9 @@ function update(){
 
     // 총알의 y좌표 업데이트 하는 함수 포출
     for(let i=0; i<bulletList.length; i++){
+<<<<<<< HEAD
+        bulletList[i].update();
+=======
         if(bulletList[i].alive){
             bulletList[i].update();
             bulletList[i].checkHit();
@@ -147,12 +181,18 @@ function update(){
 
     for(let i=0; i<enemyList.length; i++){
         enemyList[i].update();
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     }
 }
 
 function render(){
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     ctx.drawImage(spaceshipImage,spaceshipX,spaceshipY);
+<<<<<<< HEAD
+
+    for(let i=0; i<bulletList.length; i++){
+        ctx.drawImage(bulletImage,bulletList[i].x,bulletList[i].y);
+=======
     ctx.fillText(`Score:${score}`, 20, 20);
     ctx.fillStyle ="white";
     ctx.font ="20px Arial";
@@ -169,10 +209,16 @@ function render(){
 
     for(let i=0; i<enemyList.length; i++){
         ctx.drawImage(enemyImage, enemyList[i].x, enemyList[i].y);
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     }
 }
 
 function main(){
+<<<<<<< HEAD
+    update();  // 좌표값을 업데이트하고
+    render();  // 그려주고
+    requestAnimationFrame(main);
+=======
     if(!gameOver){
         update();  // 좌표값을 업데이트하고
         render();  // 그려주고
@@ -180,11 +226,15 @@ function main(){
     } else {
         ctx.drawImage(gameOverImage, 10,100,380,380);
     }
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 }
 
 loadImage();
 setupKeyboardListener();
+<<<<<<< HEAD
+=======
 createEnemy();
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
 main();
 
 // 방향키를 누르면
@@ -199,6 +249,14 @@ main();
 // 5. 총알 배열을 가지고 render 그려준다
 
 // 적군 만들기
+<<<<<<< HEAD
+// x,y, init, update
+// 적군은 위치가 랜덤하다
+// 적군은 밑으로 내려온다
+// 1초마다 하나씩 적군이 나온다
+// 적군의 우주선이 바닥에 닿으면 게임 오버
+// 적군과 총알이 만나면 우주선이 사라진다 점수 1점획득
+=======
 // x,y , init , update
 // 1. 적군의 위치가 랜덤하다
 // 2. 적군은 밑으로 내려온다
@@ -211,3 +269,4 @@ main();
 // 총알.y <= 적군.y And 
 // 총알.x >= 적군.x and 총알.x <= 적군.x + 적군의 넓이 
 // => 닿았다 =>총알이 죽게도미 적군의 우주선이 죽게됨 점수획득
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04

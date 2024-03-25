@@ -31,11 +31,19 @@
                     </dl>
                     <dl>
                         <dt>작성일</dt>
+<<<<<<< HEAD
+                        <dd>2022.08.26</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>33</dd>
+=======
                         <dd><input type="date" name="t_date" value=""  style="border: none"></dd>
                     </dl>
                     <dl>
                         <dt>조회</dt>
                         <dd><input type="text" name="t_num" value="1" style="border: none;"></dd>
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
                     </dl>
                 </div>
                 <div class="cont">
@@ -51,12 +59,15 @@
 </form>
 
 <script>
+<<<<<<< HEAD
+=======
     // var v_inq = document.querySelector("input[name=t_num]");
     // function increse(){
     // 조회수를 증가시켜야한다
     //     v_inq.value++;
     // }
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     var v_form = document.querySelector("#id_rform");
     var v_delBtn = document.querySelector("#id_del");
     var v_abc = document.querySelector('.abc');
@@ -67,13 +78,19 @@
     }
     v_delBtn.addEventListener("click", f_del);
 
+<<<<<<< HEAD
+=======
     document.querySelector("input[name=t_date]").value = f_getToday();
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     var v_titleText = v_form.nm_title;
     var v_writerText = v_form.nm_writer;
     var v_contentText = v_form.nm_content;
     
+<<<<<<< HEAD
+=======
     
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
     var v_gnum = request.getParameter("gnum");
 
@@ -88,7 +105,10 @@
             break;
         }
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
     v_titleText.value = v_schGul.title;
     v_writerText.value = v_schGul.writer;
     v_contentText.value = v_schGul.content;
