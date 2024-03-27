@@ -69,6 +69,7 @@ document.querySelectorAll("#to-currency-list a").forEach((menu) =>
 function convert(type){
     let amount = 0;
     if(type == "from"){
+<<<<<<< HEAD
         
     
     //1. 환전
@@ -80,6 +81,17 @@ function convert(type){
     renderKoreanNumber(amount, convertedAmount);
 
     document.getElementById("to-input").value = convertedAmount;
+=======
+      //1. 환전
+      // 얼마를 환전? 가지고 있는 돈이 뭔지, 바꾸고자하는 돈이 뭔지
+      // 돈 * 환율 = 환전금액
+      let amount = document.getElementById("from-input").value;
+      let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
+      //console.log("환전결과 ", convertedAmount);
+      renderKoreanNumber(amount, convertedAmount);
+
+      document.getElementById("to-input").value = convertedAmount;
+>>>>>>> 51ccf5c61f7819b71055619850987fb522f911aa
     } else {
         amount = document.getElementById("toAmount").value;
         let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];

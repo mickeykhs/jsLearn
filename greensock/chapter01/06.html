@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        body{
+            background: gray;
+        }
+
+        .circle{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: dodgerblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            border: 6px solid black;
+            overflow: hidden;
+        }
+
+        .bg{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: darkblue;
+        }
+
+        .circle span{
+            color: #fff;
+            font-size: 5vw;
+            position:relative;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <div class="bg"></div>
+        <span>hover me</span>
+    </div>
+    <script>
+        const circle = document.querySelector(".circle")
+        const bg = document.querySelector(".bg")
+
+        var getter = gsap.getProperty(bg);
+        var x = getter('width','vw');
+
+        console.log(x);
+
+        circle.addEventListener('mouseenter',()=>{
+            console.log(gsap.getProperty(bg,'scale'));
+            gsap.fromTo(bg,{scale:0},{scale:1});
+        })
+    </script>
+</body>
+</html>

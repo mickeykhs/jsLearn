@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        body{
+            background: gray;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+        }
+
+        .stage{
+            width: 50vw;
+            height: 50vh;
+            display:flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background: black;
+        }
+
+        .box{
+            width: 100px;
+            min-width:30px;
+            height: 50px;
+            margin: 2vw;
+        }
+        .orange{ 
+            background: orange;
+        }
+        .pink{
+            background: hotpink;
+        }
+
+        .green{
+            background: green;
+        }
+
+        .red{
+            background: red;
+        }
+
+        .blue{
+            background: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="orange box"></div>
+        <div class="pink box"></div>
+        <div class="green box"></div>
+        <div class="red box"></div>
+        <div class="blue box"></div>
+    </div>
+    <script>
+        //gsap.to('.box',{y:-100,stagger:0.2,delay:1})
+        // stagger 안의 each는 기본값 
+        // amount: 1  이러면 1초안에 모든 애니메이션 실행
+        // from : 'center' 가운데부터 실행
+        // from : 'edges'  모서리부터 실행
+        gsap.to('.box',{y:-100,stagger:{
+            //each:0.2
+            amount:1,
+            from: 'edges'
+        },delay:1})
+    </script>
+</body>
+</html>
