@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/css.css">
+    <script src="./noticelib.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .swal2-popup {
+            font-size: 1.7rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        <div class="board_list_wrap">
+            
+        </div>
+    </div>
+<script>
+    var v_blw = document.querySelector(".board_list_wrap");
+    var v_dataArr = JSON.parse(localStorage.getItem(v_tableName));
+    // 페이지
+    var v_pDsu = 5;
+    var v_pNum = request.getParameter("pNum");
+    if(!v_pNum){
+        v_pNum = 1;
+    }
+
+    var v_totalG = v_dataArr.length;
+    var v_pGaesu = Math.ceil(v_totalG / v_pDsu);
+    var v_sNum = (v_pNum -1) * v_pDsu;
+    var v_eNum = v_sNum + (v_pDsu -1);
+
+    if(v_eNum > (v_totalG -1)) {
+        v_eNum = v_totalG -1;
+    }
+
+    var v_boardStr = "<div class=board_list><div class=top>";
+    v_boardStr += "<div class=num>번호</div><div class=title>제목</div>";
+    v_boardStr += "<div class=writer>글쓴이</div><div class=date>작성일</div><div class=delete>삭제</div></div>";
+    for(var i=v_sNum; i<=v_eNum; i++){
+        var v_ggul = v_dataArr[i];
+        v_boardStr += "<div>";
+        v_boardStr += "<div class=num>" + (i+1) + "</div>";
+        v_boardStr += "<div class=title><a href=view.html?gnum=" + v_ggul.pid + " >" + v_ggul.title + "</a></div>";
+        v_boardStr += "<div class=writer>" + v_ggul.writer + "</div>";
+        v_boardStr += "<div class=date>" + v_ggul.date + "</div>";
+        v_boardStr += "<div class=delete><input type=checkbox name=nm_del value=" + v_ggul.pid + "></div>";
+        v_boardStr += "</div>";
+    }
+    v_boardStr += "</div><div class=board_page>";
+    v_boardStr += "<a href='list.html?pNum=1' class=bt first><<</a>";
+    
+    for(var i=1; i<=v_pGaesu; i++){
+        if(i == v_pNum){
+            v_boardStr += "<a class='num on' href='list.html?pNum=" + i + "'>" + i + "</a>";
+        } else {
+            v_boardStr += "<a class=num href='list.html?pNum=" + i + "'>" + i + "</a>";
+        }
+    }
+    v_boardStr += "<a class='bt last' href='list.html?pNum=" + v_pGaesu +"'>" + ">></a>";
+    v_boardStr += "</div>"; 
+    v_boardStr += "<div class=bt_wrap><a href=write.html class=on>새글 작성</a>";
+    v_boardStr += "<input id=id_del type=button value='체크박스 삭제'>새글 작성</div>";
+
+    v_blw.innerHTML = v_boardStr;
+
+    var v_delBtn = document.querySelector("#id_del");
+    var v_delBoxs = document.querySelectorAll("input[name=nm_del]");
+
+    function f_del(){
+        var v_checkedVals = [];
+        for(var i=0; i<v_delBoxs.length; i++){
+            if(v_delBoxs[i].checked){
+                v_checkedVals.push(v_delBoxs[i].value);
+            }
+        }
+
+        // 해당하는 값 배열에서 지우기
+        for(var i=0; i<v_checkedVals.length; i++){
+            for(var j=0; j<v_dataArr.length; j++){
+                if(v_dataArr[j].pid == v_checkedVals[i]){
+                    v_dataArr.splice(j,1);
+                    break;
+                }
+            }
+        }
+        
+        localStorage.setItem(v_tableName, JSON.stringify(v_dataArr));
+        
+        Swal.fire({
+            title: '정말로 삭제하시겠습니까?',
+            text: '다시 되돌릴 수 없습니다. 신중하세요',
+            icon: 'warning',
+
+            showCancelButton: true,
+            ConfirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '승인',
+            cancelButtonText: '취소',
+
+            reverseButtons: false,
+
+        }).then(result => {
+            if(result.isConfirmed){
+                location.replace('./list.html?pNum=' + v_pNum);
+            }
+        });
+        // location.replace("list.html?pNum=" + v_pNum);
+    }
+    v_delBtn.addEventListener("click",f_del);
+
+</script>
+</body>
+</html>

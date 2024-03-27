@@ -1,0 +1,27 @@
+<body>
+    <h1 id="title" class="sample">title</h1>
+    <p class="text">text-1</p>
+    <p class="text">text-2</p>
+    <a id="a" class="sample" href="#">text-3</a><br><br>
+    <a href="#">text-4</a>
+   
+
+    
+    <script>
+        // id 속성값이 title인 요소 노드 1개 선택하기 (id는 유일하기 때문)
+        const el = document.getElementById('title');
+        console.log(el);
+         
+        // class 속성값이 text인 요소 노드 모두 선택하기
+        const classEL = document.getElementsByClassName("text");
+        console.log(classEL);
+
+        // p 태그에 해당하는 요소 노드 모두 선택하기
+        const tagEls = document.getElementsByTagName("p");
+        console.log(tagEls);
+    </script>
+</body>
+<!-- getElementById : id 속성값과 일치하는 요소 노드를 1개만 선택한다
+     getElementByClassName : class 속성값과 일치하는 요소 노드를 모두 선택한다
+     getElementByTagName : 태그명과 일치하는 요소 노드를 모두 선택한다
+ -->

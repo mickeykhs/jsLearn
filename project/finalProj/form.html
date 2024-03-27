@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>진단서</title>
+<style>
+    div{
+        border: 1px solid red;
+        overflow: hidden;
+    }
+    .contai{
+        display: flex;
+        justify-content: center;
+    }
+    .totalBox{
+        height: 517px;
+        width: 80%;
+    }
+    .doctor{
+        display: flex;
+        height: 50px;
+        width: 100%;
+    }
+    .info{
+        width: 20%;
+    }
+    .name{
+        height: 100%;
+        width: 10%;
+    }
+    .birth{
+        height: 100%;
+        width: 10%;
+
+    }
+    .address{
+        display: flex;
+        height: 32%;
+        width: 100%;
+    }
+    .sex{
+        height: 100%;
+        width: 10%;
+    }
+    .tel{
+        height: 100%;
+        width: 10%;
+    }
+    .patient{
+        height: 150px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .firstBox{
+        height: 100%;
+        width: 10%;
+    }
+    .secondBox{
+        height: 100%;
+        width: 90%;
+    }
+    .third{
+        height: 50px;
+    }
+    .four{
+        height: 66%;
+    }
+    .disease{
+        display: flex;
+        height: 200px;
+        justify-content: space-between;
+    }
+    .disnm{
+        width: 10%;
+    }
+    .disno{
+        height: 50px;
+    }
+    .text{
+        width: 75%;
+    }
+    .text2{
+        height: 150px;
+    }
+    .date{
+        display: flex;
+        height: 50px;
+        justify-content: flex-start;
+    }
+    .note{
+        height: 50px;
+        width: 10%;
+    }
+    .pathogenesis{
+        width: 10%;
+    }
+    .diagnosis{
+        width: 10%;
+    }
+    .one{
+        display: flex;
+        height: 49%;
+    }
+    .two{
+        display: flex;
+        height: 49%;
+    }
+    .scBox{
+        height: 66%;
+    }
+    .dt{
+        width: 10%;
+        height: 100%;
+    }
+    .add{
+        height: 100%;
+        width: 10%;
+    }
+</style>
+</head>
+<body>
+    <h1 style="text-align: center">진단서</h1>
+    <div class="contai">
+        <div class="totalBox">
+            <div class="doctor">
+                <div class="dt">담당의</div>
+                <input type="text" name="" id="" style="width: 40%">
+            </div>
+            
+            <div class="patient">
+                <div class="firstBox">환자정보
+                </div>
+                <div class="secondBox">
+                    <div class="scBox">
+                        <div class="one">
+                            <div class="name">성명</div>
+                            <input type="text" name="" id="nm" value="" style="width: 40%">
+                            <div class="sex">성별</div>
+                        </div>
+                        <div class="two">
+                            <div class="birth">생년월일</div>
+                            <input type="date" name="" id="" style="width: 40%">
+                            <div class="tel">전화번호</div>
+                        </div>
+                    </div>
+                    <div class="address">
+                        <div class="add">주소</div>
+                        <input type="text" name="" id="" style="width: 90%">
+                    </div>
+                </div>
+            </div>
+            <div class="disease">
+                <div class="disnm">병명</div>
+                <div class="text">내용</div>
+                <div>
+                    <div class="disno">한국질병 분류번호</div>
+                    <div class="text2">번호 내용</div>
+                </div>
+            </div>
+            <div class="date">
+                <div class="pathogenesis">발병일</div>
+                <input type="date" name="" id="" style="width: 40%">
+                <div class="diagnosis">진단일</div>
+                <input type="date" name="" id="" style="width: 40%">
+                
+            </div>
+            <div class="last">
+                <div class="note">비고</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scroll_menu</title>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body { font-size: 2.5rem;}
+        h1 {
+            background: red;
+            width:100%;
+            position: fixed;
+            top: 0;
+        }
+        .wrap {
+            width: 950px;
+            margin:0 auto;
+        }
+        .top_menu {
+            position:fixed;
+            margin: 0 auto;
+            top: 106px;
+            width:950px;
+            height: 114px;
+            z-index: 1000;
+            background-color: #fff;
+        }
+        .menu {
+            display: flex;
+         
+        }
+        .menu-link {
+            margin: .1em;
+            padding: .3em;
+            color: #fff;
+            background:  dodgerblue;
+            text-decoration: none;
+            list-style: none;
+        }
+        .menu-active {
+            background: orange;
+        }
+        #contents {
+            margin-top : 220px;
+        }
+        #contents div {
+            padding-top: 100px;
+        }
+        #paper {
+            width: 100%;
+            height: 750px;
+            background-color: #ffe200;
+        }
+        #works {
+            width: 100%;
+            height: 750px;
+            background-color: #00BAFF;
+        }
+        #email {
+            width: 100%;
+            height: 800px;
+            background-color: #ffe200;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-title">Event</h1>
+
+    <div class="wrap">
+        <div class="top_menu">
+            <nav class="menu">
+                <a href="#" class="menu-link" data-menu="1">menu 1</a>
+                <a href="#" class="menu-link" data-menu="2">menu 2</a>
+                <a href="#" class="menu-link" data-menu="3">menu 3</a>
+            </nav>
+        </div>
+        <div id="contents">
+            <div id="paper">PAPER</div>
+            <div id="works">WORKS</div>
+            <div id="email">EMAIL</div>
+        </div>
+    </div>
+        
+    <script>
+        // 현재 활성화된 메뉴를 담을 변수
+        var currentMenu;
+        var menuLinks = document.querySelectorAll('.menu-link');
+        var menu = $('.menu-link');
+        var con = $('#contents > div');
+        console.log(menu[0]);
+
+        // 메뉴를 누르면 오렌지색으로 바뀌고 다른 메뉴를 누르면 기존의 오렌지색이
+        // 파란색으로 바뀌고 누른 메뉴의 색이 오렌지색으로 바뀌게 해보자.
+        function clickMenuHandler(){
+            for(var i=0; i<menuLinks.length; i++){
+                menuLinks[i].classList.remove('menu-active');
+                this.classList.add('menu-active');
+            }
+            var idx = $(this).index();
+            var section = con.eq(idx);
+            var sectionDistance = section.offset().top + (-220) + "px";
+            console.log(sectionDistance);
+            $('html,body').animate({
+                scrollTop:sectionDistance
+            },1000);
+        }
+
+
+        for(var i=0; i<menuLinks.length; i++){
+            menuLinks[i].addEventListener('click', clickMenuHandler);
+        }
+    </script>
+</body>
+</html>

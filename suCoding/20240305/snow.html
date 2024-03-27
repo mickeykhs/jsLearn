@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="snow"></div>
+    <script>
+        function createSnow(){
+            var el = document.createElement('div');
+            el.classList.add('snow');
+            el.style.marginLeft = randomPosition() + "px";
+            document.body.appendChild(el);
+        }
+
+        function randomPosition(){
+            return Math.floor(Math.random() * window.innerWidth);
+        }
+
+        for(var i=0; i<300; i++){
+            createSnow();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        transition: 1s;
+    } 
+    .ball.end {
+        background: dodgerblue;
+    }   
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+
+    <script>
+    const ballElem = document.querySelector('.ball');
+
+    window.addEventListener('click',function(e){
+        ballElem.style.transform = 'translate(' + (e.clientX-15) + 'px, ' + (e.clientY-15) + 'px)';
+    });
+
+
+    ballElem.addEventListener('transitionend', function(e){  // transitionend 트랜지션이 끝났을때 이벤트 transitionstart 시작했을 때 이벤트
+        ballElem.classList.add('end');
+        console.log(e.elapsedTime); // duration과 같음
+        console.log(e.propertyName); 
+
+    });
+
+    </script>
+</body>
+</html>

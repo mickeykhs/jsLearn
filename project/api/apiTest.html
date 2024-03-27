@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API 연습</title>
+  </head>
+  <body>
+    <h1>내 사이트임 ㅎㅇ</h1>
+    <input type="text" id="bookName" value="">
+    <button id="search">검색</button>
+    <p></p>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $("#search").click(function () {
+          $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v2/search/vclip",
+            data: { query: $('#bookName').val() },
+            // data: { query: 'AOA' },
+            headers: {
+              Authorization: "KakaoAK 933ad800e95e11486be244c625f2ce7f",
+            },
+          }).done(function (msg) {
+            console.log(msg);
+            console.log(msg.documents[0].title);
+            console.log(msg.documents[0].url);
+            $("p").append("<strong>" + msg.documents[0].title + "</strong>");
+            $("p").append("<img src='" + msg.documents[0].thumbnail + "'>");
+            $("p").append("<a href='" + msg.documents[0].url + "'>시청하기</a>");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

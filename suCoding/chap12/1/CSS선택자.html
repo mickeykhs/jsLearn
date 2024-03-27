@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box-1">
+      <p class="text">text-1</p>
+      <p class="text">text-2</p>
+    </div>
+    <div class="box-2">
+      <p class="text2">text-3</p>
+      <p class="text3">text-4</p>
+    </div>
+    <script>
+      var a = document.querySelector("p.text2");
+      console.log(a);
+      const el = document.querySelectorAll(".box-1 .text");
+      console.log(el);
+      /* 성능적으로 보면 get으로 가져오는게 좋다
+        하지만 인터넷속도 웹브라우저가 많이 발전함
+        따라서 get으로 받나 querySelector로 받나 차이가 없다 */
+        setTimeout(function foo(){
+          console.log('java');
+          setTimeout(foo, 2000)
+        },2000)
+    </script>
+  </body>
+</html>

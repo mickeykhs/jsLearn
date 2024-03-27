@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+    <script src="./noticelib.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<script>
+    // 넘어온 값들
+    var v_title = request.getParameter("nm_title");
+    var v_writer = request.getParameter("nm_writer");
+    var v_content = request.getParameter("nm_content");
+
+    // localStorage 에 저장하기
+    var v_arrTotal = [];
+    var v_pid = 1;
+    // 값을 맨처음 넣을 때와 이미 값이 존재하고 있을 때를 구분
+    if(localStorage.getItem(v_tableName)){
+        v_arrTotal = JSON.parse(localStorage.getItem(v_tableName));
+        v_pid = v_arrTotal[v_arrTotal.length-1].pid +1;
+    }
+
+    var v_gul = {};
+    v_gul.pid = v_pid;
+    v_gul.title = v_title;
+    v_gul.writer = v_writer;
+    v_gul.content = v_content;
+<<<<<<< HEAD
+=======
+    v_gul.date = f_getToday();
+>>>>>>> 4ac3c02a08da31f15c41bf45c72f4fba2a586a04
+    v_arrTotal.push(v_gul);
+
+    localStorage.setItem(v_tableName, JSON.stringify(v_arrTotal));
+    Swal.fire({
+        icon: 'success',
+        title: '글이 잘 등록되었습니다',
+        showConfirmButton: false,
+        timer: 5500
+    }).then((value) => {
+        if(value){
+            location.replace('./list.html');
+        }
+    });
+    // alert("잘 등록되었습니다.");
+    // location.replace("list.html");
+</script>
+</body>
+</html>
